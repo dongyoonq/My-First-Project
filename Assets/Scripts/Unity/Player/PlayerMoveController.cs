@@ -28,6 +28,7 @@ public class PlayerMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //SetCameraPosition();
         LookAround();
         Move();
     }
@@ -69,6 +70,33 @@ public class PlayerMoveController : MonoBehaviour
             animator.SetFloat("Blend", 0, 0.1f, Time.deltaTime);
     }
 
+    /*
+    private void SetCameraPosition()
+    {
+        // Ray를 카메라에서 플레이어 방향으로 쏘고 충돌 정보 검사
+        Ray ray = new Ray(transform.position, character.position - transform.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, maxCameraDistance))
+        {
+            // 충돌한 경우, 카메라 위치를 충돌 지점으로 이동
+            transform.position = hit.point;
+        }
+        else
+        {
+            // 충돌하지 않은 경우, 최소거리로 카메라 위치 조정
+            Vector3 playerPosition = character.position;
+            Vector3 cameraPosition = transform.position;
+            float distance = Vector3.Distance(playerPosition, cameraPosition);
+
+            if (distance < minCameraDistance)
+            {
+                Vector3 direction = (cameraPosition - playerPosition).normalized;
+                transform.position = playerPosition + direction * minCameraDistance;
+            }
+        }
+    
+    }*/
+
     private void LookAround()
     {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -80,24 +108,10 @@ public class PlayerMoveController : MonoBehaviour
         Debug.Log(newAngleY);
 
         newAngleX = GetCameraMaxAngleX(newAngleX);
-        newAngleY = GetCameraMaxAngleY(newAngleY);
 
         Quaternion rotation = Quaternion.Euler(newAngleX, newAngleY, camAngle.z);
-        Vector3 cameraDirection = rotation * Vector3.forward;
-        Vector3 cameraPosition = character.position - cameraDirection * maxCameraDistance;
 
-        /*
-        RaycastHit hit;
-        if (Physics.Raycast(character.position, cameraDirection, out hit, maxCameraDistance))
-        {
-            cameraPosition = character.position - cameraDirection * hit.distance;
-        }*/
-
-        followCam.rotation = rotation;
-
-        Debug.Log(cameraDirection);
-        Debug.Log(cameraPosition);
-        Debug.Log(character.position);  
+        followCam.rotation = rotation;  
     }
 
     private float GetCameraMaxAngleX(float camAngleX)
@@ -108,19 +122,5 @@ public class PlayerMoveController : MonoBehaviour
             camAngleX = Mathf.Clamp(camAngleX, 325f, 361f);
 
         return camAngleX;
-    }
-
-    private float GetCameraMaxAngleY(float camAngleY)
-    {
-        /*
-        if (!OnLookAround)
-        {
-            if (camAngleY < 180f)
-                camAngleY = Mathf.Clamp(camAngleY, -1f, 80f);
-            else
-                camAngleY = Mathf.Clamp(camAngleY, 280f, 361f);
-        }*/
-
-        return camAngleY;
     }
 }
