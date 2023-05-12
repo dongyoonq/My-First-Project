@@ -32,6 +32,10 @@ public class PlayerMoveController : MonoBehaviour
         Move();
     }
 
+    private void LateUpdate()
+    {
+    }
+
     private void Move()
     {
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -73,7 +77,10 @@ public class PlayerMoveController : MonoBehaviour
         float newAngleX = camAngle.x - mouseDelta.y;
         float newAngleY = camAngle.y + mouseDelta.x;
 
+        Debug.Log(newAngleY);
+
         newAngleX = GetCameraMaxAngleX(newAngleX);
+        newAngleY = GetCameraMaxAngleY(newAngleY);
 
         Quaternion rotation = Quaternion.Euler(newAngleX, newAngleY, camAngle.z);
         Vector3 cameraDirection = rotation * Vector3.forward;
@@ -101,5 +108,28 @@ public class PlayerMoveController : MonoBehaviour
             camAngleX = Mathf.Clamp(camAngleX, 325f, 361f);
 
         return camAngleX;
+    }
+
+    private float GetCameraMaxAngleY(float camAngleY)
+    {
+        if (Input.GetKey(KeyCode.LeftAlt))
+            OnLookAround = true;
+
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            OnLookAround = false;
+            camAngleY = 0;
+        }
+
+        /*
+        if (!OnLookAround)
+        {
+            if (camAngleY < 180f)
+                camAngleY = Mathf.Clamp(camAngleY, -1f, 80f);
+            else
+                camAngleY = Mathf.Clamp(camAngleY, 280f, 361f);
+        }*/
+
+        return camAngleY;
     }
 }
