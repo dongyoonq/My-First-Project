@@ -112,15 +112,6 @@ public class PlayerMoveController : MonoBehaviour
 
     private float GetCameraMaxAngleY(float camAngleY)
     {
-        if (Input.GetKey(KeyCode.LeftAlt))
-            OnLookAround = true;
-
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            OnLookAround = false;
-            camAngleY = 0;
-        }
-
         /*
         if (!OnLookAround)
         {
