@@ -9,20 +9,24 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField]
     private Transform followCam;
 
-    public float Speed = 5f;
+    private float Speed;
+    public float NormalSpeed = 4.3f;
+    public float RunSpeed = 6.8f;
+    public float jumpForce = 300f;
 
     Animator animator;
 
-    public float cameraDistance = 3.7f;
-    public bool OnLookAround;
+    public float minCameraDistance = 0.4f; // 최소 카메라 거리
+    public float maxCameraDistance = 3.7f; // 최대 카메라 거리
     public bool OnRunKey;
 
     // Start is called before the first frame update
     void Start()
     {
+        Speed = NormalSpeed;
         animator = character.GetComponent<Animator>();
         Debug.Log(followCam);
-        Camera.main.GetComponent<Transform>().localPosition = new Vector3(0, 1.1f, -cameraDistance);
+        Camera.main.ScreenToWorldPoint(new Vector3(0, 1.1f, -maxCameraDistance));
     }
 
     // Update is called once per frame
@@ -30,10 +34,16 @@ public class PlayerMoveController : MonoBehaviour
     {
         LookAround();
         Move();
+        Jump();
     }
 
     private void LateUpdate()
     {
+    }
+
+    private void FixedUpdate()
+    {
+        SetCameraPosition();
     }
 
     private void Move()
@@ -43,13 +53,13 @@ public class PlayerMoveController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            Speed = 8f;
+            Speed = RunSpeed;
             OnRunKey = true;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Speed = 5f;
+            Speed = NormalSpeed;
             OnRunKey = false;
         }
 
@@ -69,6 +79,50 @@ public class PlayerMoveController : MonoBehaviour
             animator.SetFloat("Blend", 0, 0.1f, Time.deltaTime);
     }
 
+    private void Jump()
+    {
+        if (Input.GetAxis("Jump") != 0)
+        {
+            animator.SetBool("OnPlayerJump", true);
+
+            Vector3 jumpDirection = new Vector3(followCam.forward.x, 0f, followCam.forward.z).normalized;
+
+            Rigidbody rb = GetComponent<Rigidbody>();
+
+            // 캐릭터를 바라보는 방향으로 점프합니다.
+            rb.AddForce(jumpDirection * jumpForce, ForceMode.Force);
+
+        }
+        else
+            animator.SetBool("OnPlayerJump", false);
+    }
+
+    
+    private void SetCameraPosition()
+    {
+        // Ray를 카메라에서 플레이어 방향으로 쏘고 충돌 정보 검사
+        Vector3 directionToCamera = (followCam.transform.position - Camera.main.transform.position).normalized;
+        Debug.Log(directionToCamera);
+        Debug.DrawLine(Camera.main.transform.position, followCam.transform.position, Color.red);
+
+        //Ray ray = new Line(Camera.main.transform.position, followCam.position);
+
+        int playerLayer = LayerMask.NameToLayer("Player");  // 플레이어의 레이어
+        int layerMask = ~(1 << playerLayer);                // 플레이어 레이어를 제외한 모든 레이어
+
+        RaycastHit hit;
+        if (Physics.Linecast(followCam.transform.position, Camera.main.transform.position, out hit, layerMask))
+        {
+            // 장애물과 충돌한 경우, mainCamera와 followCam 사이의 거리를 최소거리로 설정
+            Camera.main.transform.position = hit.point - directionToCamera * minCameraDistance;
+        }
+        else
+        {
+            // 장애물이 없는 경우, mainCamera와 followCam 사이의 거리를 최대거리로 설정
+            Camera.main.transform.position = followCam.position - directionToCamera * maxCameraDistance;
+        }
+    }
+
     private void LookAround()
     {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -77,12 +131,13 @@ public class PlayerMoveController : MonoBehaviour
         float newAngleX = camAngle.x - mouseDelta.y;
         float newAngleY = camAngle.y + mouseDelta.x;
 
-        Debug.Log(newAngleY);
-
         newAngleX = GetCameraMaxAngleX(newAngleX);
-        newAngleY = GetCameraMaxAngleY(newAngleY);
 
-        followCam.rotation = Quaternion.Euler(newAngleX, newAngleY, camAngle.z);
+        Quaternion rotation = Quaternion.Euler(newAngleX, newAngleY, camAngle.z);
+
+        followCam.rotation = rotation;
+        //SetCameraPosition();
+
     }
 
     private float GetCameraMaxAngleX(float camAngleX)
@@ -93,28 +148,5 @@ public class PlayerMoveController : MonoBehaviour
             camAngleX = Mathf.Clamp(camAngleX, 325f, 361f);
 
         return camAngleX;
-    }
-
-    private float GetCameraMaxAngleY(float camAngleY)
-    {
-        if (Input.GetKey(KeyCode.LeftAlt))
-            OnLookAround = true;
-
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            OnLookAround = false;
-            camAngleY = 0;
-        }
-
-        /*
-        if (!OnLookAround)
-        {
-            if (camAngleY < 180f)
-                camAngleY = Mathf.Clamp(camAngleY, -1f, 80f);
-            else
-                camAngleY = Mathf.Clamp(camAngleY, 280f, 361f);
-        }*/
-
-        return camAngleY;
     }
 }

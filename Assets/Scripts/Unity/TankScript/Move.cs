@@ -1,45 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
 public class Move : MonoBehaviour
 {
     public float MoveSpeed;
+
     Vector3 lookDirection;
+    Vector3 lastLookDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) ||
-            Input.GetKey(KeyCode.S) ||
-            Input.GetKey(KeyCode.A) ||
-            Input.GetKey(KeyCode.D))
+        PlayerMove();
+    }
+
+    private void PlayerMove()
+    {
+        transform.rotation = Quaternion.LookRotation(lookDirection != Vector3.zero ? lookDirection : lastLookDirection);
+        transform.Translate(lookDirection * MoveSpeed * Time.deltaTime, Space.World);
+    }
+
+    private void OnMove(InputValue inputvalue)
+    {
+        Vector2 input = inputvalue.Get<Vector2>();
+        lookDirection = input.y * Vector3.forward + input.x * Vector3.right;
+
+        if (lookDirection != Vector3.zero)
         {
-            float xx = Input.GetAxis("Vertical");
-            float zz = Input.GetAxis("Horizontal"); 
-            lookDirection = xx * Vector3.forward + zz * Vector3.right;
-
-            this.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), 0.1f);
-            this.transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+            lastLookDirection = lookDirection; // 입력이 있는 경우에만 lastLookDirection 값을 갱신
         }
-
-        if(Input.GetKey(KeyCode.R))
-        {
-
-        }
-            
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            MoveSpeed += 7.7f;
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-            MoveSpeed -= 7.7f;
     }
 }
