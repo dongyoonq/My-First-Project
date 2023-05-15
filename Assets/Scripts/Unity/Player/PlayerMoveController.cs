@@ -39,10 +39,6 @@ public class PlayerMoveController : MonoBehaviour
 
     private void LateUpdate()
     {
-    }
-
-    private void FixedUpdate()
-    {
         SetCameraPosition();
     }
 
@@ -123,8 +119,6 @@ public class PlayerMoveController : MonoBehaviour
         }
     }
 
-    }
-
     private void LookAround()
     {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -138,8 +132,6 @@ public class PlayerMoveController : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(newAngleX, newAngleY, camAngle.z);
 
         followCam.rotation = rotation;
-        //SetCameraPosition();
-
     }
 
     private float GetCameraMaxAngleX(float camAngleX)
