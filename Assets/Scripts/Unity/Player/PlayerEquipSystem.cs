@@ -28,8 +28,8 @@ public class PlayerEquipSystem : MonoBehaviour
                 weapon = Instantiate(weapon, hand.transform.position, hand.transform.rotation, hand.transform);
                 weapon.transform.parent = hand.transform;
             }
+            }
         }
-    }
 
     private void LateUpdate()
     {
