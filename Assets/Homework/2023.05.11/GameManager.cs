@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        player.name = "Player";
+        if(player != null)
+            player.name = "Player";
     }
 }

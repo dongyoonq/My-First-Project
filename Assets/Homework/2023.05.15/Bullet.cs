@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-namespace HomeWork
+namespace HomeWork_05_15
 {
     public class Bullet : MonoBehaviour
     {
@@ -12,6 +13,7 @@ namespace HomeWork
         void Update()
         {
             transform.Translate(Vector3.forward * BulletSpeed);
+            Destroy(gameObject, 5f);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HomeWork
+namespace HomeWork_05_15
 {
     public class Fire : MonoBehaviour
     {
@@ -53,5 +53,4 @@ namespace HomeWork
             }
         }
     }
-
 }
