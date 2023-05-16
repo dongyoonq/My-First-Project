@@ -25,7 +25,6 @@ public class PlayerMoveController : MonoBehaviour
     {
         Speed = NormalSpeed;
         animator = character.GetComponent<Animator>();
-        Debug.Log(followCam);
         Camera.main.ScreenToWorldPoint(new Vector3(0, 1.1f, -maxCameraDistance));
     }
 
@@ -98,7 +97,6 @@ public class PlayerMoveController : MonoBehaviour
     {
         // Ray를 카메라에서 플레이어 방향으로 쏘고 충돌 정보 검사
         Vector3 directionToCamera = (followCam.transform.position - Camera.main.transform.position).normalized;
-        Debug.Log(directionToCamera);
         Debug.DrawLine(Camera.main.transform.position, followCam.transform.position, Color.red);
 
         //Ray ray = new Line(Camera.main.transform.position, followCam.position);

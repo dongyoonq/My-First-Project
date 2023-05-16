@@ -16,6 +16,7 @@ public class Collider : MonoBehaviour
         
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag != "Player")
@@ -32,5 +33,5 @@ public class Collider : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-    }
+    }*/
 }

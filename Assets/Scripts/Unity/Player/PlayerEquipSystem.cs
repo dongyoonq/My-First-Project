@@ -9,7 +9,7 @@ public class PlayerEquipSystem : MonoBehaviour
     private Transform character;
 
     [SerializeField]
-    private Weapon weapon;
+    private GameObject weaponPrefabs;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +25,11 @@ public class PlayerEquipSystem : MonoBehaviour
             GameObject hand = GameObject.Find("Bip001 R Finger1");
             if (!hand.transform.Find("Weapon"))
             {
-                weapon = Instantiate(weapon, hand.transform.position, hand.transform.rotation, hand.transform);
-                weapon.transform.parent = hand.transform;
-            }
+                weaponPrefabs = Instantiate(weaponPrefabs, hand.transform.position, hand.transform.rotation, hand.transform);
+                weaponPrefabs.transform.SetParent(hand.transform);
             }
         }
+    }
 
     private void LateUpdate()
     {

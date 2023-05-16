@@ -14,4 +14,11 @@ public class Weapon : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, 0.32f);
         transform.name = "Weapon";
     }
+
+    /*
+    private void OnTriggerEnter(UnityEngine.Collider other)
+    {
+
+    }
+    */
 }
