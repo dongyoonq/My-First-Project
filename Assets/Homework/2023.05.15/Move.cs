@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 
-namespace HomeWork
+namespace HomeWork_05_15
 {
     public class Move : MonoBehaviour
     {

@@ -20,16 +20,13 @@ public class PlayerMoveController : MonoBehaviour
     public float maxCameraDistance = 3.7f; // 최대 카메라 거리
     public bool OnRunKey;
 
-    // Start is called before the first frame update
     void Start()
     {
+        // 시작시 초기화 
         Speed = NormalSpeed;
         animator = character.GetComponent<Animator>();
-        Debug.Log(followCam);
-        Camera.main.ScreenToWorldPoint(new Vector3(0, 1.1f, -maxCameraDistance));
     }
 
-    // Update is called once per frame
     void Update()
     {
         LookAround();
@@ -42,11 +39,16 @@ public class PlayerMoveController : MonoBehaviour
         SetCameraPosition();
     }
 
+    /// <summary>
+    /// 플레이어의 움직임, 설정
+    /// </summary>
     private void Move()
     {
+        // 수평, 수직이동을 감지하고 값을 받음
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         bool isMove = (moveInput.magnitude != 0) ? true : false;
 
+        // 달리기 버튼 Left Shift
         if(Input.GetKey(KeyCode.LeftShift))
         {
             Speed = RunSpeed;
@@ -59,6 +61,7 @@ public class PlayerMoveController : MonoBehaviour
             OnRunKey = false;
         }
 
+        // 플레이어 움직임이 감지 되었을때
         if (isMove)
         {
             Vector3 lookForward = new Vector3(followCam.forward.x, 0f, followCam.forward.z).normalized;
