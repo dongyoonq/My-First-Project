@@ -8,6 +8,6 @@
 
 ③　2023.05.15　:　[유니티 프리팹 코루틴](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/2023.05.15)
 
-④　2023.05.16　:　[유니티 충돌,카메라,오디오](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/2023.05.16)
+④　2023.05.16　:　[유니티 충돌, 카메라, 오디오](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/2023.05.16)
 
-④　2023.05.17　:　[유니티 애니메이션,UI,씬](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/2023.05%2017)
+④　2023.05.17　:　[유니티 애니메이션 ,UI, 씬](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/2023.05%2017)
