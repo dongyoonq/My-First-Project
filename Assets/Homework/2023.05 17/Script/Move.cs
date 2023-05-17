@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.TextCore.Text;
 
-namespace HomeWork_05_16
+namespace HomeWork_05_17
 {
     public class Move : MonoBehaviour
     {
         private Vector3 moveDir;
         Rigidbody rb;
 
+        public Transform turret;
+
         public float MoveSpeed = 15f;
         public float RotateSpeed = 2f;
         public float jumpForce = 12f;
 
+        private float moveTurret;
         private bool isGround = true;
 
         // Start is called before the first frame update
@@ -29,6 +33,7 @@ namespace HomeWork_05_16
         {
             PlayerMove();
             PlayerRotate();
+            TurretMove();
         }
 
         private void PlayerMove()
@@ -43,6 +48,11 @@ namespace HomeWork_05_16
                 transform.Rotate(Vector3.up, 90f * RotateSpeed * Time.deltaTime * moveDir.x, Space.Self);
         }
 
+        private void TurretMove()
+        {
+            turret.Rotate(Vector3.up, 90f * RotateSpeed * moveTurret * Time.deltaTime, Space.Self);
+        }
+
         private void PlayerJump()
         {
             if(isGround && isNormal())
@@ -53,6 +63,11 @@ namespace HomeWork_05_16
         {
             moveDir.x = inputvalue.Get<Vector2>().x;
             moveDir.z = inputvalue.Get<Vector2>().y;
+        }
+
+        private void OnMoveTurret(InputValue inputvalue)
+        {
+            moveTurret = inputvalue.Get<Vector2>().x;
         }
 
         // 동시 키 입력 불가능하게 설정하는 플래그

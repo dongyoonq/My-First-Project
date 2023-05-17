@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace HomeWork_05_16
+namespace HomeWork_05_17
 {
     public class Fire : MonoBehaviour
     {
@@ -13,6 +13,7 @@ namespace HomeWork_05_16
         public Transform FirePos;
 
         private AudioSource audioSource;
+        private Animator animator;
 
         [SerializeField]
         private float repeatTime = 0.1f;
@@ -25,6 +26,7 @@ namespace HomeWork_05_16
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
+            animator = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -55,6 +57,7 @@ namespace HomeWork_05_16
 
         private void OnFire(InputValue inputValue)
         {
+            animator.SetTrigger("Fire");
             if (inputValue.isPressed && isRepeatMode)
             {
                 if (!isFiring)
@@ -75,10 +78,14 @@ namespace HomeWork_05_16
             else
             {
                 if (bulletRoutine != null)
+                {
                     StopCoroutine(bulletRoutine);
+                }
 
                 if (isFiring)
+                {
                     isFiring = false;
+                }
             }
         }
 
