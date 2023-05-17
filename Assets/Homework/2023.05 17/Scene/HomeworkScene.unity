@@ -785,7 +785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050699950}
-  m_LocalRotation: {x: 0.07009583, y: 0.72355586, z: -0.6826667, w: 0.074294314}
+  m_LocalRotation: {x: 0.07009598, y: 0.7235559, z: -0.6826667, w: 0.07429446}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 1287947682}
   - component: {fileID: 1287947685}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,7 +943,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2113898625922496442, guid: 12deee94339a8104c9a18073cc236ba8, type: 3}
   bulletPos: {fileID: 146496544}
-  tank: {fileID: 1534391644}
 --- !u!1 &1354238074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354238074}
-  m_LocalRotation: {x: 0.07009583, y: 0.72355586, z: -0.6826667, w: 0.074294314}
+  m_LocalRotation: {x: 0.07009598, y: 0.7235559, z: -0.6826667, w: 0.07429446}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1407,7 +1406,7 @@ AudioSource:
     m_RotationOrder: 4
 --- !u!95 &1534391657
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1424,8 +1423,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1534391658
 MonoBehaviour:
   m_ObjectHideFlags: 0
