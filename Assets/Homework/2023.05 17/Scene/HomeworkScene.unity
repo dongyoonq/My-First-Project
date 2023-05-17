@@ -785,7 +785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050699950}
-  m_LocalRotation: {x: 0.07009598, y: 0.7235559, z: -0.6826667, w: 0.07429446}
+  m_LocalRotation: {x: 0.070095904, y: 0.72355586, z: -0.6826668, w: 0.07429438}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1020,7 +1020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354238074}
-  m_LocalRotation: {x: 0.07009598, y: 0.7235559, z: -0.6826667, w: 0.07429446}
+  m_LocalRotation: {x: 0.070095904, y: 0.72355586, z: -0.6826668, w: 0.07429438}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1295,19 +1295,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1534391654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534391644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cec486bb23795a4babce0fd7829e4f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCM: {fileID: 107123986}
 --- !u!82 &1534391656
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1457,6 +1444,19 @@ MonoBehaviour:
   MoveSpeed: 15
   RotateSpeed: 2
   jumpForce: 12
+--- !u!114 &1534391660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534391644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f875ad31e7794de48a493ffac4f7b704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCM: {fileID: 107123986}
 --- !u!1 &1541017730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2068927167}
   - component: {fileID: 2068927166}
-  - component: {fileID: 2068927168}
   m_Layer: 0
   m_Name: MiniMapCam
   m_TagString: Untagged
@@ -1876,18 +1875,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
---- !u!114 &2068927168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068927164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f806ed8a781fd4eabb64af77a73920, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2075243993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +1927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementRange: 50
+  m_MovementRange: 80
   m_ControlPath: <Gamepad>/leftStick
 --- !u!114 &2075243996
 MonoBehaviour:
