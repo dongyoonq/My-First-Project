@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 398894333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -670.4822, y: 468.6117}
-  m_SizeDelta: {x: 429.0357, y: 88.7767}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -71.388306}
+  m_SizeDelta: {x: 429.0357, y: 88.77673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9163284
 MonoBehaviour:
@@ -461,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146496543}
   m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009989463, y: 0.59035885, z: 1.0163214}
+  m_LocalPosition: {x: 0.009989463, y: 0.53, z: 1.104}
   m_LocalScale: {x: 0.5047701, y: 0.5047701, z: 0.5047701}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -854,7 +854,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050699950}
-  m_LocalRotation: {x: 0.07009601, y: 0.7235559, z: -0.6826667, w: 0.07429449}
+  m_LocalRotation: {x: 0.07009613, y: 0.7235559, z: -0.68266666, w: 0.07429463}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -940,7 +940,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354238074}
-  m_LocalRotation: {x: 0.07009601, y: 0.7235559, z: -0.6826667, w: 0.07429449}
+  m_LocalRotation: {x: 0.07009613, y: 0.7235559, z: -0.68266666, w: 0.07429463}
   m_LocalPosition: {x: -1.75, y: 10.01, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   playerCM: {fileID: 107123986}
 --- !u!95 &1534391657
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1247,8 +1247,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1534391658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repeatTime: 0.1
-  Bullet: {fileID: 2113898625922496442, guid: b5e1802ea3543f2438bfa58bda2eaad4, type: 3}
+  Bullet: {fileID: 2113898625922496442, guid: 3b7b3632fde38094082f30794f47074f, type: 3}
   FirePos: {fileID: 146496544}
   OnFired:
     m_PersistentCalls:
@@ -1334,7 +1333,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8169414681308978711, guid: 3c3a390911d8e7b4fbd0cd43dca72326, type: 2}
   m_audioClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1455,7 +1454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 232}
+  m_AnchoredPosition: {x: 0, y: 210}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541017733

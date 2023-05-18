@@ -99,7 +99,7 @@ namespace HomeWork_05_18
             if (isRepeatMode)
                 OnChangedMode?.Invoke("연사모드 활성화", 1.0f);
             else
-                OnChangedMode?.Invoke("연사모드 비활성화", 1.0f);
+                OnChangedMode?.Invoke("단발모드 활성화", 1.0f);
         }
     }
 }
