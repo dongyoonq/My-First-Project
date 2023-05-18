@@ -12,19 +12,23 @@ public class PlayerMoveController : MonoBehaviour
     private float Speed;
     public float NormalSpeed = 4.3f;
     public float RunSpeed = 6.8f;
-    public float jumpForce = 300f;
+    public float jumpForce = 100f;
 
     Animator animator;
+    Rigidbody rb;
 
     public float minCameraDistance = 0.4f; // 최소 카메라 거리
     public float maxCameraDistance = 3.7f; // 최대 카메라 거리
-    public bool OnRunKey;
+
+    private bool OnRunKey;
+    private bool isGround = true;
 
     void Start()
     {
         // 시작시 초기화 
         Speed = NormalSpeed;
         animator = character.GetComponent<Animator>();
+        rb = transform.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -37,6 +41,19 @@ public class PlayerMoveController : MonoBehaviour
     private void LateUpdate()
     {
         SetCameraPosition();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Ground"))
+            isGround = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            isGround = false;
     }
 
     /// <summary>
@@ -80,23 +97,20 @@ public class PlayerMoveController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetAxis("Jump") != 0)
+        if (Input.GetAxis("Jump") != 0 && isGround)
         {
             animator.SetBool("OnPlayerJump", true);
 
-            Vector3 jumpDirection = new Vector3(followCam.forward.x, 0f, followCam.forward.z).normalized;
-
-            Rigidbody rb = GetComponent<Rigidbody>();
-
             // 캐릭터를 바라보는 방향으로 점프합니다.
-            rb.AddForce(jumpDirection * jumpForce, ForceMode.Force);
-
+            rb.AddForce(character.up * jumpForce, ForceMode.Force);
         }
         else
+        {
             animator.SetBool("OnPlayerJump", false);
+        }
     }
 
-    
+
     private void SetCameraPosition()
     {
         // Ray를 카메라에서 플레이어 방향으로 쏘고 충돌 정보 검사
