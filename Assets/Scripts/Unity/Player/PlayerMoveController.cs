@@ -101,8 +101,7 @@ public class PlayerMoveController : MonoBehaviour
         {
             animator.SetBool("OnPlayerJump", true);
 
-            // 캐릭터를 바라보는 방향으로 점프합니다.
-            rb.AddForce(character.up * jumpForce, ForceMode.Force);
+            rb.AddForce(Vector3.up.normalized * jumpForce, ForceMode.Impulse);
         }
         else
         {
