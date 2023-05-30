@@ -4,8 +4,8 @@
 ## HomeWork
 **※　Asset**
 
-①　[Config](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/Config)<BR>
-②　[Manager](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/Manager)<BR>
+①　[Config](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/Configs)<BR>
+②　[Manager](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/Managers)<BR>
 ③　[Prefabs](https://github.com/dongyoonq/UnityStudyProject/tree/master/Assets/Homework/Prefabs)
 <BR><BR>
 **※　Script**
